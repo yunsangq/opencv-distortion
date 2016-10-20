@@ -51,7 +51,8 @@ int main() {
 				//정규화 왜곡이 없는 좌표
 				double xn_u = (x - cx) / fx;
 				double yn_u = (y - cy) / fy;
-
+				
+				//왜곡 보정
 				double ru2 = xn_u*xn_u + yn_u*yn_u;
 				double radial_d = 1 + k1*ru2 + k2*ru2*ru2;
 
@@ -74,9 +75,9 @@ int main() {
 			}
 		}
 
-		imshow("input cam", input);
-		imshow("output cam", output);
-
+		Mat disp;
+		hconcat(input, output, disp);
+		imshow("Result", disp);
 		if (waitKey(33) == 27) break;
 	}
 	destroyAllWindows();
