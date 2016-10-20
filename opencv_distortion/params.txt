@@ -1,0 +1,14 @@
+fx
+fy
+cx
+cy
+k1
+k2
+p1
+p2
+
+fx
+fy
+cx
+cy
+w
