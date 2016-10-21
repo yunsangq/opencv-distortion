@@ -123,15 +123,19 @@ int main() {
 				out[ch*x + 2] = in[ch*px + 2];
 			}
 		}		
-		
-		Mat disp;
-		vector<Mat> matrices;
-		matrices.push_back(input);
-		matrices.push_back(output_1);
-		matrices.push_back(output_2);
-		hconcat(matrices, disp);
 
-		imshow("input cam", disp);		
+		Mat disp(row * 2, col * 2, CV_8UC3);
+		Mat imageRoI = disp(Rect(0, 0, col, row));
+		Mat mask = input;
+		input.copyTo(imageRoI, mask);
+		imageRoI = disp(Rect(col, 0, col, row));
+		mask = output_1;
+		output_1.copyTo(imageRoI, mask);
+		imageRoI = disp(Rect(0, row, col, row));
+		mask = output_2;
+		output_2.copyTo(imageRoI, mask);
+
+		imshow("result", disp);
 
 		if (waitKey(fps) == 27) break;
 	}
