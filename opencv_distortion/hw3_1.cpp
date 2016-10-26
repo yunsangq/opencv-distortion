@@ -43,8 +43,8 @@ int main() {
 		int col = input.cols;
 		int row = input.rows;
 		int ch = input.channels();
-		Mat output(row, col, CV_8UC3);
-
+		Mat output(row, col, CV_8UC3, Scalar(0,0,0));
+		
 		int x, y;		
 		for (y = 0; y < row; ++y) {			
 			for (x = 0; x < col; ++x) {

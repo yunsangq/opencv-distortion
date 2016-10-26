@@ -124,14 +124,14 @@ int main() {
 			}
 		}		
 
-		Mat disp(row * 2, col * 2, CV_8UC3);
+		Mat disp(row * 2+1, col * 2+1, CV_8UC3);
 		Mat imageRoI = disp(Rect(0, 0, col, row));
 		Mat mask = input;
 		input.copyTo(imageRoI, mask);
-		imageRoI = disp(Rect(col, 0, col, row));
+		imageRoI = disp(Rect(col+1, 0, col, row));
 		mask = output_1;
 		output_1.copyTo(imageRoI, mask);
-		imageRoI = disp(Rect(0, row, col, row));
+		imageRoI = disp(Rect(0, row+1, col, row));
 		mask = output_2;
 		output_2.copyTo(imageRoI, mask);
 
