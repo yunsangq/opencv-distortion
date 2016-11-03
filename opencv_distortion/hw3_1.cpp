@@ -65,13 +65,14 @@ int main() {
 
 				int px = xp_d;
 				int py = yp_d;
-				
-				uchar* in = (uchar*)input.data + input.step*py;
-				uchar* out = (uchar*)output.data + output.step*y;
+				if (px > 0 && py > 0) {
+					uchar* in = (uchar*)input.data + input.step*py;
+					uchar* out = (uchar*)output.data + output.step*y;
 
-				out[ch*x] = in[ch*px];
-				out[ch*x + 1] = in[ch*px + 1];
-				out[ch*x + 2] = in[ch*px + 2];	
+					out[ch*x] = in[ch*px];
+					out[ch*x + 1] = in[ch*px + 1];
+					out[ch*x + 2] = in[ch*px + 2];
+				}
 			}
 		}
 
